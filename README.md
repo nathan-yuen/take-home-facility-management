@@ -22,3 +22,8 @@ Default url: http://localhost:3000/
 # Test
 `yarn test-server`
 
+# Screenshots
+![list](screenshots/list.png)
+![list](screenshots/search.png)
+![list](screenshots/add.png)
+![list](screenshots/edit.png)
