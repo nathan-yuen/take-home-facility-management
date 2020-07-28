@@ -1,0 +1,57 @@
+type Query {
+  hello(subject: String): String
+  facilities(filter: String, sizeFilter: [FacilitySize], offset: Int, limit: Int): Facilities
+  facility(id: Int!): Facility
+}
+
+type Mutation {
+  addFacility(facility: FacilityAddInput!): Facility!
+  removeFacility(id: Int!): FacilityUpdateResponse
+  updateFacility(facility: FacilityUpdateInput!): FacilityUpdateResponse
+}
+
+type Facility {
+  id: Int!
+  name: String!
+  address: String!
+  size: FacilitySize!
+}
+
+type Facilities {
+  items: [Facility]
+  total: Int!
+  offset: Int!
+  limit: Int!
+}
+
+input FacilityUpdateInput {
+  id: Int!
+  name: String
+  address: String
+  size: FacilitySize
+}
+
+input FacilityAddInput {
+  name: String!
+  address: String!
+  size: FacilitySize!
+}
+
+enum FacilitySize {
+  SMALL
+  MEDIUM
+  LARGE
+}
+
+type FacilityUpdateResponse {
+  success: Boolean!
+  message: String
+  updated: Facility
+}
+
+enum FacilityOrderBy {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC  
+}
